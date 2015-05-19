@@ -20,4 +20,9 @@ class MemeTextDelegate : NSObject, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    func textFieldDidEndEditing(textField: UITextField) {
+        if textField.text == "" {
+            textField.text = "WUT"
+        }
+    }
 }
