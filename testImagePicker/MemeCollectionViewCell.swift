@@ -13,4 +13,9 @@ class MemeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var memeCollUpperText: UILabel!
     @IBOutlet weak var memeCollImage: UIImageView!
     @IBOutlet weak var memeCollLowerText: UILabel!
+    
+    func setText (upperText : String, lowerText : String) {
+        memeCollUpperText.text = upperText
+        memeCollLowerText.text = lowerText
+    }
 }
