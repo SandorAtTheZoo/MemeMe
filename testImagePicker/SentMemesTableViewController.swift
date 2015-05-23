@@ -34,8 +34,6 @@ class SentMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         memes = appDelegate.memes
-        //TODO:REMOVE DEBUG CODE
-        //memes.insert(Meme(), atIndex: 0)
         
         //much heartache to recognize that this needed to be done
         tblView.reloadData()

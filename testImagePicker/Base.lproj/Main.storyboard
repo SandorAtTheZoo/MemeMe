@@ -95,28 +95,50 @@
             </objects>
             <point key="canvasLocation" x="2365" y="-49"/>
         </scene>
-        <!--Item-->
+        <!--Sent Memes-->
         <scene sceneID="dYs-hf-PD3">
             <objects>
-                <collectionViewController id="fjC-Xt-KAM" sceneMemberID="viewController">
+                <collectionViewController id="fjC-Xt-KAM" customClass="SentMemesCollectionViewController" customModule="testImagePicker" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Rp6-zp-q3f">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wOe-hc-lug">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="135" height="122"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="LQk-Ao-dNY">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MemeCollectionCell" id="LQk-Ao-dNY" customClass="MemeCollectionViewCell" customModule="testImagePicker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="135" height="122"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="UPPER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GXd-3f-fd2">
+                                            <rect key="frame" x="13" y="8" width="109" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LOWER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zJK-Ws-FUk">
+                                            <rect key="frame" x="24" y="93" width="86" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xce-x5-3i6">
+                                            <rect key="frame" x="33" y="30" width="68" height="61"/>
+                                        </imageView>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <outlet property="memeCollImage" destination="xce-x5-3i6" id="ZiQ-WH-lUr"/>
+                                    <outlet property="memeCollLowerText" destination="zJK-Ws-FUk" id="Fl6-az-Bhn"/>
+                                    <outlet property="memeCollUpperText" destination="GXd-3f-fd2" id="YCY-uS-ztX"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -125,7 +147,10 @@
                         </connections>
                     </collectionView>
                     <tabBarItem key="tabBarItem" title="Item" id="hSb-Bx-80W"/>
-                    <navigationItem key="navigationItem" id="Q3K-9q-Idl"/>
+                    <navigationItem key="navigationItem" title="Sent Memes" id="Q3K-9q-Idl"/>
+                    <connections>
+                        <outlet property="collView" destination="Rp6-zp-q3f" id="RDY-RN-raM"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1X8-n7-5Jt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
