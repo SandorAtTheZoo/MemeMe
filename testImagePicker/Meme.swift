@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 class Meme {
-    var textArr = ["TOP", "BOTTOM"]
-    var imageOriginal : UIImage?
-    var imageMeme : UIImage?
+    var textArr = ["UP", "MINE"]
+    var imageOriginal : UIImage? = UIImage(named: "testImage")
+    var imageMeme : UIImage? = UIImage(named: "testImage")
     
     init() {
         

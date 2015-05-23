@@ -8,6 +8,9 @@
 
 import UIKit
 
+//having problems with navigation controllers inside of navigation controllers
+//https://github.com/John-Lluch/SWRevealViewController/issues/98
+
 class SentMemesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var memes : [Meme]!
@@ -30,14 +33,14 @@ class SentMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         memes = appDelegate.memes
-        println ("we have \(memes.count) memes")
+        //TODO:REMOVE DEBUG CODE
+        memes.insert(Meme(), atIndex: 0)
         
         //much heartache to recognize that this needed to be done
         tblView.reloadData()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        println("numRows num memes : \(self.memes.count)")
         return self.memes.count
     }
     
@@ -49,14 +52,16 @@ class SentMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         //set cell to meme data
         cell.imageView?.image = meme.imageMeme
         cell.textLabel?.text = meme.textArr[0]
-        println("meme text : \(meme.textArr[0])")
         
         return cell
     }
     
-//    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-//        
-//    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
+        detailController.memeDetail = self.memes[indexPath.row]
+        self.navigationController!.pushViewController(detailController, animated: true)
+        println(" not sure : \(self.navigationController?.description)")
+    }
     /*
     // MARK: - Navigation
 
