@@ -53,7 +53,7 @@
                             <constraint firstItem="oiF-uC-4PO" firstAttribute="width" secondItem="9D5-dl-nlK" secondAttribute="width" id="l6a-Dw-zvg"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="M8Y-rk-ZOU"/>
+                    <tabBarItem key="tabBarItem" title="" image="tableIcon" id="M8Y-rk-ZOU"/>
                     <navigationItem key="navigationItem" title="Sent Memes" id="lE2-WZ-rEQ"/>
                     <connections>
                         <outlet property="tblView" destination="oiF-uC-4PO" id="mzm-hN-8eB"/>
@@ -157,7 +157,7 @@
                             <outlet property="delegate" destination="fjC-Xt-KAM" id="OrF-Ar-sL2"/>
                         </connections>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" title="Item" id="hSb-Bx-80W"/>
+                    <tabBarItem key="tabBarItem" title="" image="collectionIcon" id="hSb-Bx-80W"/>
                     <navigationItem key="navigationItem" title="Sent Memes" id="Q3K-9q-Idl"/>
                     <connections>
                         <outlet property="collView" destination="Rp6-zp-q3f" id="RDY-RN-raM"/>
@@ -253,7 +253,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4065" y="487"/>
+            <point key="canvasLocation" x="3098" y="487"/>
         </scene>
         <!--Sent Memes-->
         <scene sceneID="YvI-uM-cMB">
@@ -273,8 +273,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="fjC-Xt-KAM" kind="relationship" relationship="viewControllers" id="zH8-qA-x5T"/>
                         <segue destination="FbU-oL-UFa" kind="relationship" relationship="viewControllers" id="I71-pc-gr8"/>
+                        <segue destination="fjC-Xt-KAM" kind="relationship" relationship="viewControllers" id="zH8-qA-x5T"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V2i-1L-yWe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -286,6 +286,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DEz-Pj-gGt" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="O6Y-Vv-TMj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -301,6 +302,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="collectionIcon" width="30" height="30"/>
+        <image name="tableIcon" width="30" height="30"/>
         <image name="testImage" width="24" height="24"/>
     </resources>
 </document>
