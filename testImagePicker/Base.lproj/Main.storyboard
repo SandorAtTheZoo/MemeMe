@@ -13,7 +13,7 @@
                         <viewControllerLayoutGuide type="bottom" id="8mp-8J-Loh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9D5-dl-nlK">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="oiF-uC-4PO">
@@ -100,7 +100,7 @@
             <objects>
                 <collectionViewController id="fjC-Xt-KAM" customClass="SentMemesCollectionViewController" customModule="testImagePicker" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Rp6-zp-q3f">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wOe-hc-lug">
                             <size key="itemSize" width="135" height="122"/>
@@ -248,6 +248,7 @@
                         <outlet property="cameraButton" destination="TQi-Hf-TFp" id="QGM-Mt-vui"/>
                         <outlet property="imagePanel" destination="MZh-ug-N6Y" id="o83-b8-Bui"/>
                         <outlet property="shareMemeButton" destination="beY-L9-DD0" id="dOI-RC-gpJ"/>
+                        <outlet property="thisToolbar" destination="lxF-lr-i5c" id="SjX-32-rl4"/>
                         <outlet property="topTextField" destination="u89-mg-RN9" id="wPt-85-XPd"/>
                     </connections>
                 </viewController>
@@ -286,7 +287,6 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DEz-Pj-gGt" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="O6Y-Vv-TMj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

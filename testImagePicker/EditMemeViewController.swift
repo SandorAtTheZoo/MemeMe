@@ -15,6 +15,7 @@ class EditMemeViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var shareMemeButton: UIBarButtonItem!
+    @IBOutlet weak var thisToolbar: UIToolbar!
     
     let memeTextDelegate = MemeTextDelegate()
     
@@ -142,13 +143,16 @@ class EditMemeViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     func generateMemedImage() -> UIImage {
         
-        //TODO: hide toolbar and navbar
+        //hide toolbar for photo
+        self.thisToolbar.alpha = 0
         //render view to image
         UIGraphicsBeginImageContext(self.view.frame.size)
         self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
         let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        //TODO: show toolbar and navbar
+        //show toolbar after photo
+        self.thisToolbar.alpha = 1
+        
         
         return memedImage
     }

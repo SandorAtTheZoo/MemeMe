@@ -34,6 +34,15 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
         collectionView?.reloadData()
         
     }
+    //this fixes a glitch where collection view doesn't display content correctly first time
+    //(too high in nav bar)...upon navigating away and returning, it worked, but this resolves that
+    //http://stackoverflow.com/questions/18896210/ios7-uicollectionview-appearing-under-uinavigationbar
+    override func viewDidLayoutSubviews() {
+        let top = self.topLayoutGuide.length
+        let bottom = self.bottomLayoutGuide.length
+        let newInsets = UIEdgeInsetsMake(top, 0, bottom, 0)
+        self.collView.contentInset = newInsets
+    }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return memes.count

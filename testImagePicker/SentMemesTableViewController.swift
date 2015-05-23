@@ -39,6 +39,14 @@ class SentMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         tblView.reloadData()
     }
     
+    //fixes problem where first table item ends up too high
+    override func viewDidLayoutSubviews() {
+        let top = self.topLayoutGuide.length
+        let bottom = self.bottomLayoutGuide.length
+        let newInsets = UIEdgeInsetsMake(top, 0, bottom, 0)
+        self.tblView.contentInset = newInsets
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let numMemes = self.memes?.count {
             return numMemes
@@ -47,7 +55,6 @@ class SentMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         }
 
     }
-    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MemeTableCell") as! UITableViewCell
