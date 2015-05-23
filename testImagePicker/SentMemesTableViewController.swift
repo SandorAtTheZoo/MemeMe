@@ -11,6 +11,7 @@ import UIKit
 class SentMemesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var memes : [Meme]!
+    @IBOutlet weak var tblView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +30,17 @@ class SentMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         memes = appDelegate.memes
+        println ("we have \(memes.count) memes")
+        
+        //much heartache to recognize that this needed to be done
+        tblView.reloadData()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        println("numRows num memes : \(self.memes.count)")
         return self.memes.count
     }
+    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MemeTableCell") as! UITableViewCell
@@ -42,13 +49,14 @@ class SentMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         //set cell to meme data
         cell.imageView?.image = meme.imageMeme
         cell.textLabel?.text = meme.textArr[0]
+        println("meme text : \(meme.textArr[0])")
         
         return cell
     }
     
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        
-    }
+//    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+//        
+//    }
     /*
     // MARK: - Navigation
 

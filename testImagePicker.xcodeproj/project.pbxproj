@@ -87,14 +87,14 @@
 			children = (
 				37E7282E1AFEBAD4006F5855 /* AppDelegate.swift */,
 				37E728301AFEBAD4006F5855 /* EditMemeViewController.swift */,
+				3744AABF1B0ACE33005B996F /* SentMemesTableViewController.swift */,
+				3744AAC11B0ACE44005B996F /* SentMemesCollectionViewController.swift */,
+				37EB5FDC1B0816B5007E776C /* Meme.swift */,
+				37EB5FDA1B07C1B5007E776C /* MemeTextDelegate.swift */,
 				37E728321AFEBAD4006F5855 /* Main.storyboard */,
 				37E728351AFEBAD4006F5855 /* Images.xcassets */,
 				37E728371AFEBAD4006F5855 /* LaunchScreen.xib */,
 				37E7282C1AFEBAD4006F5855 /* Supporting Files */,
-				37EB5FDA1B07C1B5007E776C /* MemeTextDelegate.swift */,
-				37EB5FDC1B0816B5007E776C /* Meme.swift */,
-				3744AABF1B0ACE33005B996F /* SentMemesTableViewController.swift */,
-				3744AAC11B0ACE44005B996F /* SentMemesCollectionViewController.swift */,
 			);
 			path = testImagePicker;
 			sourceTree = "<group>";

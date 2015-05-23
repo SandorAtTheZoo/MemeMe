@@ -85,6 +85,7 @@ class EditMemeViewController: UIViewController, UIImagePickerControllerDelegate,
             }
             else {
                 self.saveMeme(textArr, originalImage: imageOriginal, memeImage: memedImage)
+                println("saved a meme somewhere")
                 activityController.dismissViewControllerAnimated(true, completion: nil)
             }
         }
