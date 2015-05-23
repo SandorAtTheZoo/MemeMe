@@ -10,6 +10,7 @@ import UIKit
 
 //having problems with navigation controllers inside of navigation controllers
 //https://github.com/John-Lluch/SWRevealViewController/issues/98
+//just don't do it
 
 class SentMemesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -34,14 +35,19 @@ class SentMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         let appDelegate = object as! AppDelegate
         memes = appDelegate.memes
         //TODO:REMOVE DEBUG CODE
-        memes.insert(Meme(), atIndex: 0)
+        //memes.insert(Meme(), atIndex: 0)
         
         //much heartache to recognize that this needed to be done
         tblView.reloadData()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.memes.count
+        if let numMemes = self.memes?.count {
+            return numMemes
+        } else {
+            return 0
+        }
+
     }
     
     
@@ -60,7 +66,6 @@ class SentMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
         detailController.memeDetail = self.memes[indexPath.row]
         self.navigationController!.pushViewController(detailController, animated: true)
-        println(" not sure : \(self.navigationController?.description)")
     }
     /*
     // MARK: - Navigation
