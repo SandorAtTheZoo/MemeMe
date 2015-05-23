@@ -1,5 +1,5 @@
 //
-//  SentMemesTabBarController.swift
+//  SentMemesCollectionViewController.swift
 //  testImagePicker
 //
 //  Created by Christopher Johnson on 5/18/15.
@@ -8,7 +8,9 @@
 
 import UIKit
 
-class SentMemesTabBarController: UITabBarController {
+class SentMemesCollectionViewController: UIViewController {
+    
+    var memes : [Meme]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,14 @@ class SentMemesTabBarController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
+        let object = UIApplication.sharedApplication().delegate
+        let appDelegate = object as! AppDelegate
+        memes = appDelegate.memes
+        
+    }
 
     /*
     // MARK: - Navigation
