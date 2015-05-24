@@ -259,7 +259,7 @@
         <!--Sent Memes-->
         <scene sceneID="YvI-uM-cMB">
             <objects>
-                <tabBarController id="0cY-8I-Weq" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="myTabController" id="0cY-8I-Weq" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Sent Memes" id="S7H-Jd-HAb">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="RkJ-AK-Qn2">
                             <connections>

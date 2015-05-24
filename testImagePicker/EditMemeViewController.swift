@@ -87,6 +87,7 @@ class EditMemeViewController: UIViewController, UIImagePickerControllerDelegate,
             else {
                 self.saveMeme(textArr, originalImage: imageOriginal, memeImage: memedImage)
                 activityController.dismissViewControllerAnimated(true, completion: nil)
+                self.navigationController?.popViewControllerAnimated(true)
             }
         }
         

@@ -53,7 +53,7 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
         let meme = memes[indexPath.item]
         
         cell.memeCollImage.image = meme.imageMeme
-        cell.setText(meme.textArr[1], lowerText: meme.textArr[0])
+        cell.setText(meme.textArr[0], lowerText: meme.textArr[1])
         
         return cell
         
