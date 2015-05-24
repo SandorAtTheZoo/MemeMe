@@ -35,6 +35,10 @@ class SentMemesTableViewController: UIViewController, UITableViewDataSource, UIT
         let appDelegate = object as! AppDelegate
         memes = appDelegate.memes
         
+        //dynamically adjust cell row height
+        self.tblView.rowHeight = UITableViewAutomaticDimension
+        self.tblView.estimatedRowHeight = 100
+        
         //much heartache to recognize that this needed to be done
         tblView.reloadData()
     }
@@ -57,12 +61,12 @@ class SentMemesTableViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MemeTableCell") as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("MemeTableCell") as! MemeTableViewCell
         let meme = self.memes[indexPath.row]
         
         //set cell to meme data
-        cell.imageView?.image = meme.imageMeme
-        cell.textLabel?.text = meme.textArr[0]
+        cell.memeTableCellImage.image = meme.imageMeme
+        cell.setText(meme.textArr[0], lowerText: meme.textArr[1])
         
         return cell
     }
