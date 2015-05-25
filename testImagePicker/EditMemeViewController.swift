@@ -29,21 +29,8 @@ class EditMemeViewController: UIViewController, UIImagePickerControllerDelegate,
         //the default overrode the centered text, and it would not set it back programmatically
         //or in IB...this alternative works
         
-        //updateTextAttributes(topTextField)
-        //updateTextAttributes(bottomTextField)
-        var oldTextAttributes = topTextField.defaultTextAttributes
-        oldTextAttributes.updateValue(UIColor.blackColor(), forKey: NSStrokeColorAttributeName)
-        oldTextAttributes.updateValue(UIColor.whiteColor(), forKey: NSForegroundColorAttributeName)
-        oldTextAttributes.updateValue(UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!, forKey: NSFontAttributeName)
-        oldTextAttributes.updateValue(-3, forKey: NSStrokeWidthAttributeName)
-        topTextField.defaultTextAttributes = oldTextAttributes
-        
-        var oldBotTextAttrib = bottomTextField.defaultTextAttributes
-        oldBotTextAttrib.updateValue(UIColor.blackColor(), forKey: NSStrokeColorAttributeName)
-        oldBotTextAttrib.updateValue(UIColor.whiteColor(), forKey: NSForegroundColorAttributeName)
-        oldBotTextAttrib.updateValue(UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!, forKey: NSFontAttributeName)
-        oldBotTextAttrib.updateValue(-3, forKey: NSStrokeWidthAttributeName)
-        bottomTextField.defaultTextAttributes = oldBotTextAttrib
+        updateTextAttributes(topTextField)
+        updateTextAttributes(bottomTextField)
     }
 
     override func viewWillAppear(animated: Bool) {
