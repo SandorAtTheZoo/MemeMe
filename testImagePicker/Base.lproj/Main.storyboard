@@ -8,7 +8,7 @@
         <!--Sent Memes-->
         <scene sceneID="YRa-BI-D2k">
             <objects>
-                <viewController id="FbU-oL-UFa" customClass="SentMemesTableViewController" customModule="testImagePicker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeTableViewController" id="FbU-oL-UFa" customClass="SentMemesTableViewController" customModule="testImagePicker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="B3B-2P-dyn"/>
                         <viewControllerLayoutGuide type="bottom" id="8mp-8J-Loh"/>
@@ -199,7 +199,7 @@
         <!--Meme Editor-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="EditMemeViewController" customModule="testImagePicker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeEditViewController" id="vXZ-lx-hvc" customClass="EditMemeViewController" customModule="testImagePicker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -311,10 +311,10 @@
             </objects>
             <point key="canvasLocation" x="921" y="487"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--My Init Nav Controller-->
         <scene sceneID="X82-lJ-1AD">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DEz-Pj-gGt" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DEz-Pj-gGt" customClass="myInitNavController" customModule="testImagePicker" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="O6Y-Vv-TMj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

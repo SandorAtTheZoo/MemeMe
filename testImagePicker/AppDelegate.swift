@@ -14,9 +14,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var memes = [Meme]()
 
-
+    //http://stackoverflow.com/questions/26753925/set-initial-viewcontroller-in-appdelegate-swift
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //added this to transition directly to meme editor if there are no memes (could happen with core data)
+        //needed to create my own class for IB navigation controller and tie in tab controller as root in order to
+        //sync this up with what was in storyboard.  Then just a matter of pushing meme edit viewController on stack without
+        //animation to achieve option on startup
+        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let navigationController : UINavigationController = storyboard.instantiateInitialViewController() as! myInitNavController
+        let rootViewController : UIViewController = storyboard.instantiateViewControllerWithIdentifier("myTabController") as! UITabBarController
+        navigationController.viewControllers = [rootViewController]
+        self.window?.rootViewController = navigationController
+        if memes.count <= 0 {
+            let nextVC = storyboard.instantiateViewControllerWithIdentifier("MemeEditViewController") as! EditMemeViewController
+            navigationController.pushViewController(nextVC, animated: false)
+        }
+        
         return true
     }
 
@@ -41,6 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
 
 
 }
