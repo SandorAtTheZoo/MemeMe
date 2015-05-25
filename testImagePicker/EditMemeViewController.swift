@@ -28,6 +28,9 @@ class EditMemeViewController: UIViewController, UIImagePickerControllerDelegate,
         //did not use recommended memeTextAttributes dictionary as when I set as default
         //the default overrode the centered text, and it would not set it back programmatically
         //or in IB...this alternative works
+        
+        //updateTextAttributes(topTextField)
+        //updateTextAttributes(bottomTextField)
         var oldTextAttributes = topTextField.defaultTextAttributes
         oldTextAttributes.updateValue(UIColor.blackColor(), forKey: NSStrokeColorAttributeName)
         oldTextAttributes.updateValue(UIColor.whiteColor(), forKey: NSForegroundColorAttributeName)
@@ -44,13 +47,18 @@ class EditMemeViewController: UIViewController, UIImagePickerControllerDelegate,
     }
 
     override func viewWillAppear(animated: Bool) {
+        //if camera exists, enable camera icon
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+        
+        //keyboard notifications needed to shift display to see bottom meme text when editing (as keyboard rises and falls)
         self.subscribeToKeyboardNotifications()
         
+        //if an image has been chosen, allow user to share it, otherwise prevent accidental sharing
         verifyImageChosen()
     }
     
     override func viewWillDisappear(animated: Bool) {
+        //release notification when changing views
         self.unsubscribeFromKeyboardNotifications()
     }
     
@@ -61,17 +69,20 @@ class EditMemeViewController: UIViewController, UIImagePickerControllerDelegate,
     
     @IBAction func pickImageFromAlbum(sender: UIBarButtonItem) {
         
+        //bring up picker viewController for album browsing
         let nextController = UIImagePickerController()
         self.presentViewController(nextController, animated: true, completion: nil)
         nextController.delegate = self
     }
 
     @IBAction func pickImageFromCamera(sender: UIBarButtonItem) {
+        //view viewController for camera
         let nextController = UIImagePickerController()
         nextController.delegate = self
         nextController.sourceType = UIImagePickerControllerSourceType.Camera
         self.presentViewController(nextController, animated: true, completion: nil)
     }
+    
 //http://www.codeitive.com/7QNmXejWjV/uiactivityviewcontroller-completion-handler-still-calls-action-if-user-presses-cancel.html
     @IBAction func shareMeme(sender: UIBarButtonItem) {
         var imageOriginal : UIImage! = imagePanel.image
@@ -80,6 +91,7 @@ class EditMemeViewController: UIViewController, UIImagePickerControllerDelegate,
         let activityController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         self.presentViewController(activityController, animated: true, completion: nil)
         
+        //if activity viewController completes with valid selection, save meme, and return to sentMeme view
         activityController.completionWithItemsHandler = {(activityType, completed : Bool, returnedItems : [AnyObject]!, activityError : NSError!) -> Void in
             if !completed {
                 return
@@ -93,46 +105,72 @@ class EditMemeViewController: UIViewController, UIImagePickerControllerDelegate,
         
     }
     
+    //return to sentMeme view on cancel
     @IBAction func cancelEdit(sender: UIBarButtonItem) {
+
         self.navigationController?.popViewControllerAnimated(true)
     }
     
+    //whatever image chosen from album, set the local image to that and dismiss album
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            imagePanel.image = image
+            self.imagePanel.image = image
         }
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    //dismiss album picker on cancel
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        //dismiss picker
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    //modify text attributes of upper and lower meme text to be meme-ish
+    //did not work from table, as centering was overwritten
+    func updateTextAttributes(aTextField : UITextField){
+        
+        //first grab existing defaults (interfaces with IB better)
+        var oldBotTextAttrib = aTextField.defaultTextAttributes
+        //make attribute mods to defaults which include IB settings
+        oldBotTextAttrib.updateValue(UIColor.blackColor(), forKey: NSStrokeColorAttributeName)
+        oldBotTextAttrib.updateValue(UIColor.whiteColor(), forKey: NSForegroundColorAttributeName)
+        oldBotTextAttrib.updateValue(UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!, forKey: NSFontAttributeName)
+        oldBotTextAttrib.updateValue(-3, forKey: NSStrokeWidthAttributeName)
+        //set new defaults (including original ones from IB)
+        aTextField.defaultTextAttributes = oldBotTextAttrib
+    }
+    
+    //know when keyboard rises and falls
     func subscribeToKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
     }
+    //release notification when leaving the view
     func unsubscribeFromKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
     }
+    //called as selector from 'subscribeToKeyboardNotifications'
+    //adjusts view frame to shift up display when keyboard shows
     func keyboardWillShow(notification: NSNotification) {
         if bottomTextField.isFirstResponder() {
             self.view.frame.origin.y -= getKeyboardHeight(notification)
         }
     }
+    //called as selector from 'subscribeToKeyboardNotifications'
+    //adjusts view frame to shift down display when keyboard hides
     func keyboardWillHide(notification: NSNotification) {
         if self.view.frame.origin.y < 0 {
             self.view.frame.origin.y += getKeyboardHeight(notification)
         }
     }
+    //find out how tall keyboard is to know how much to shift display when it shows/hides
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue //of CGRect
         return keyboardSize.CGRectValue().height
     }
+    //instantiate new meme class and add it to the appDelegate meme array
     func saveMeme(textArray : [String], originalImage : UIImage, memeImage : UIImage) {
         //create the meme
         var newMeme = Meme(textArray: textArray, imageOrg: originalImage, imageMeme: memeImage)
@@ -142,6 +180,8 @@ class EditMemeViewController: UIViewController, UIImagePickerControllerDelegate,
         let appDelegate = object as! AppDelegate
         appDelegate.memes.append(newMeme)
     }
+    //take screenshot of memed image
+    //alpha adjustment of toolbar done to 'hide' toolbar for the screenshot
     func generateMemedImage() -> UIImage {
         
         //hide toolbar for photo
@@ -157,6 +197,7 @@ class EditMemeViewController: UIViewController, UIImagePickerControllerDelegate,
         
         return memedImage
     }
+    //support function used to determine if meme image was chosen to prevent accidental sharing
     func verifyImageChosen() {
         if let newImage = imagePanel.image {
             shareMemeButton.enabled = true

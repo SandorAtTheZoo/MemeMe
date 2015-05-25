@@ -8,6 +8,7 @@
 
 import UIKit
 
+//custom collection cell
 class MemeCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var memeCollUpperText: UILabel!

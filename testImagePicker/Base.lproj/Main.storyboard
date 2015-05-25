@@ -145,21 +145,22 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UPPER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GXd-3f-fd2">
-                                            <rect key="frame" x="39" y="8" width="57" height="20.5"/>
+                                            <rect key="frame" x="39" y="3.5" width="57" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOWER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zJK-Ws-FUk">
-                                            <rect key="frame" x="37" y="93" width="60.5" height="20.5"/>
+                                            <rect key="frame" x="37" y="97.5" width="60.5" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xce-x5-3i6">
-                                            <rect key="frame" x="33" y="30" width="68" height="61"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xce-x5-3i6">
+                                            <rect key="frame" x="32" y="25.5" width="70" height="70"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="61" id="wFx-dO-sa0"/>
+                                                <constraint firstAttribute="width" constant="70" id="ZdB-ID-mVQ"/>
+                                                <constraint firstAttribute="height" constant="70" id="wFx-dO-sa0"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>

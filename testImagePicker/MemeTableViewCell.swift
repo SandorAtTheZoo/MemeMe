@@ -11,6 +11,7 @@ import UIKit
 //helpful reference :
 //http://stackoverflow.com/questions/18746929/using-auto-layout-in-uitableview-for-dynamic-cell-layouts-variable-row-heights
 
+//custom table cell
 class MemeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var memeTableCellImage: UIImageView!
@@ -28,6 +29,7 @@ class MemeTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    //update meme text array
     func setText(upperText : String, lowerText : String) {
         memeTableCellUpperText.text = upperText
         memeTableCellLowerText.text = lowerText

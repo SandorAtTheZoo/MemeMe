@@ -27,10 +27,13 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
+        //grab meme object from appDelegate
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         memes = appDelegate.memes
         
+        //same deal as table...delegates don't fire (numberOfItemsInSection...and that propagates) because the change in meme array size is
+        //not recognized without this call
         collectionView?.reloadData()
         
     }
@@ -49,9 +52,11 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        //use custom collection cell class
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MemeCollectionCell", forIndexPath: indexPath) as! MemeCollectionViewCell
         let meme = memes[indexPath.item]
         
+        //update cell image and text items
         cell.memeCollImage.image = meme.imageMeme
         cell.setText(meme.textArr[0], lowerText: meme.textArr[1])
         
@@ -60,6 +65,7 @@ class SentMemesCollectionViewController: UICollectionViewController, UICollectio
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        //programmatically segue
         let newViewController = self.storyboard!.instantiateViewControllerWithIdentifier("DetailViewController") as! DetailViewController
         
         let meme = memes[indexPath.item]
