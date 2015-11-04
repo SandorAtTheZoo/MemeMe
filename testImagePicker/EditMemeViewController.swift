@@ -70,16 +70,16 @@ class EditMemeViewController: UIViewController, UIImagePickerControllerDelegate,
         self.presentViewController(nextController, animated: true, completion: nil)
     }
     
-//http://www.codeitive.com/7QNmXejWjV/uiactivityviewcontroller-completion-handler-still-calls-action-if-user-presses-cancel.html
+//http://stackoverflow.com/questions/28169192/ios-swift-uiactivityviewcontroller-completion-handler-returns-success-when-tweet
     @IBAction func shareMeme(sender: UIBarButtonItem) {
-        var imageOriginal : UIImage! = imagePanel.image
-        var memedImage : UIImage = generateMemedImage()
-        var textArr : [String] = [topTextField.text, bottomTextField.text]
+        let imageOriginal : UIImage! = imagePanel.image
+        let memedImage : UIImage = generateMemedImage()
+        let textArr : [String] = [topTextField.text!, bottomTextField.text!]
         let activityController = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
         self.presentViewController(activityController, animated: true, completion: nil)
         
         //if activity viewController completes with valid selection, save meme, and return to sentMeme view
-        activityController.completionWithItemsHandler = {(activityType, completed : Bool, returnedItems : [AnyObject]!, activityError : NSError!) -> Void in
+        activityController.completionWithItemsHandler = {(activityType, completed, returnedItems, activityError) in
             if !completed {
                 return
             }
@@ -99,7 +99,7 @@ class EditMemeViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     //whatever image chosen from album, set the local image to that and dismiss album
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.imagePanel.image = image
         }
@@ -160,7 +160,7 @@ class EditMemeViewController: UIViewController, UIImagePickerControllerDelegate,
     //instantiate new meme class and add it to the appDelegate meme array
     func saveMeme(textArray : [String], originalImage : UIImage, memeImage : UIImage) {
         //create the meme
-        var newMeme = Meme(textArray: textArray, imageOrg: originalImage, imageMeme: memeImage)
+        let newMeme = Meme(textArray: textArray, imageOrg: originalImage, imageMeme: memeImage)
         
         //add meme to memes array in app delegate
         let object = UIApplication.sharedApplication().delegate

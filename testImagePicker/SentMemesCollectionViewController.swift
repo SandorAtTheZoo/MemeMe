@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SentMemesCollectionViewController: UICollectionViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class SentMemesCollectionViewController: UICollectionViewController {
     
     var memes : [Meme]!
     @IBOutlet weak var collView: UICollectionView!
